@@ -96,10 +96,10 @@ In [diesem Thread](https://forum.obsidian.md/t/exporting-with-citations/75428/3)
 
 ## Musikwissenschaftliches Arbeiten
 
-### RISM / Abruf von KOmponist:innendaten
+### RISM / Abruf von Komponist:innendaten
 Ähnlich wie oben für die GND geschildert, habe ich ein [Plugin](https://github.com/kpaede/Obsidian-RISM-fetcher) erstellt, mit dem man auf die (mit der MGG abgestimmten) RISM-Daten zugreifen kann und sie in Properties verwandeln. Weil ich dieses Template zuerst erstellt habe, hat es noch nicht die Möglichkeit, so elaboriert mit Front Matter umzugehen, wie das GmD-Plug-in. Ich denke, es ist trotzdem ganz brauchbar. Jeder kann es sich gerne auch für seine eigenen Zwecke anpassen. Es muss einfach als Template mit dem Templator Plugin ausgeführt werden und ruft sich die Daten automatisch ab . EWs ist hier zu finden: [https://github.com/kpaede/Obsidian-RISM-fetcher](https://github.com/kpaede/Obsidian-RISM-fetcher)
 
-![ezgif-12d1036ee86f6750](https://github.com/user-attachments/assets/290babbd-6767-4f0d-8488-cb95614d91e8)
+![ezgif-12d1036ee86f6750|400](https://github.com/user-attachments/assets/290babbd-6767-4f0d-8488-cb95614d91e8)
 
 ## Verwendung von musikalischen Glyphen im Text
 
