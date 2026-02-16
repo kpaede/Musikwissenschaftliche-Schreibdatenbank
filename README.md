@@ -92,81 +92,26 @@ In [diesem Thread](https://forum.obsidian.md/t/exporting-with-citations/75428/3)
 
 ## Musikwissenschaftliches Arbeiten
 
-# Notation in Obsidian
-Notenbeispiele müssten normalerweise ald Bilddateien eingebettet werden, was bedeutet, dass jede Änderung an einem Musikbeispiel mehrere Schritte erfordert: Neuerstellung in der Notensatzsoftware, Exportieren und anschließendes erneutes Einbetten. Zudem kann man in normalerweise Musikbeispiele nicht anhören, keine Layout-Optionen ändern oder nur einen bestimmten Takt anzeigen lassen. Man arbeitet mit Bildern und nicht mit Musik. Das ist frustrierend, solange die musikalische Seite noch Work in Progress ist.
+### RISM / Abruf von KOmponist:innendaten
+Ähnlich wie oben für die GND geschildert, habe ich ein [Plugin](https://github.com/kpaede/Obsidian-RISM-fetcher) erstellt, mit dem man auf die (mit der MGG abgestimmten) RISM-Daten zugreifen kann und sie in Properties verwandeln. Weil ich dieses Template zuerst erstellt habe, hat es noch nicht die Möglichkeit, so elaboriert mit Front Matter umzugehen, wie das GmD-Plug-in. Ich denke, es ist trotzdem ganz brauchbar. Jeder kann es sich gerne auch für seine eigenen Zwecke anpassen. Es muss einfach als Template mit dem Templator Plugin ausgeführt werden und ruft sich die Daten automatisch ab . EWs ist hier zu finden: [https://github.com/kpaede/Obsidian-RISM-fetcher](https://github.com/kpaede/Obsidian-RISM-fetcher)
 
-Ich möchte deswegen desn von mir erstellten [Verovio Music Renderer](https://github.com/kpaede/Verovio-Music-Renderer) verwenden – aber schauen wir uns zuerst andere Lösungen an.
+![ezgif-12d1036ee86f6750](https://github.com/user-attachments/assets/290babbd-6767-4f0d-8488-cb95614d91e8)
 
-- Für [LilyPond](https://github.com/fuzzbyte/obsidian-lilypond): LilyPond ist ein offener Standard für textbasierte Musiknotation und liefert sehr schöne grafische Ergebnisse. Der Nachteil ist, dass die Notation textbasiert ist und daher nicht gerade einsteigerfreundlich. Dennoch ist es sehr nützlich, LilyPond innerhalb von Obsidian zu rendern, falls man es nutzt.
+## Verwendung von musikalischen Glyphen im Text
 
-- ABC ist ein offener Standard für Musiknotation in Textform. Es dient als Eingabe-Markup-Sprache in Musiksoftware sowie als Speicherformat für Musikdateien. Mit dem Obsidian ABC.JS Plugin kannst du ABC-Dateien nicht nur bequem rendern und abspielen, sondern den ABC-Code auch direkt in MuseScore in einen Code-Block eingeben. Es ist textbasiert, aber sehr einsteigerfreundlich und perfekt für kleine Skizzen.
-
-- Das [MuseScore integration plugin for Obsidian](https://github.com/RyotaUshio/obsidian-musescore#musescore-integration-plugin-for-obsidian) für Obsidian verfolgt einen anderen Ansatz. Es nutzt das PDF-Rendering von MuseScore als Auto-Export und ist ein weiterer sehr spannender Ansatz für dynamische Notation innerhalb von Obsidian. Im Gegensatz zum Verovio-Plugin (das wir verwenden werden) benötigt es keinen Export-Schritt nach MusicXML oder MEI innerhalb von MuseScore. Installiere es über BRAT. Der Ersteller dieses Plugins stellt es hier im Obsidian-Forum in einem sehr informativen Thread vor.
-
-## Rendering, Wiedergabe und SVG-Download von MusicXML, MEI und ABC mit dem Verovio-Plugin
-
-Obsidian ist kein Notensatzprogramm. Damit wir trotzdem gut arbeiten können, nutzen wir den Verovio Music Renderer, ein Plugin, das ich mangels Alternativen für diesen Fall entwickelt habe. Dies ist ein Plugin für Obsidian, das Verovio nutzt – eine Open-Source-Bibliothek zum Rendern von Noten in diversen Standards: MEI, MusicXML, ABC – und auch PAE, ein Format  mit dem man sehr gut kurze Notenskizzen anfertigen kann, ohne Obsidian zu verlassen. 
-
-Dieses Plugin ist Teil der Obsidian Community-Plugins, was der einfachste Weg zur Installation ist. Du kannst es auch über BRAT installieren (füge einfach die URL hinzu, auf der du dich gerade befindest, als Beta-Plugin). Du kannst es auch manuell tun: Kopiere die Dateien main.js und manifest.json aus dem Release (siehe rechts) in den Plugin-Ordner deines Vaults wie folgt: VaultOrdner/.obsidian/plugins/Verovio-Music-Renderer/.
-
-Installiere das Plugin und kopiere dann Folgendes in dein Obsidian-Dokument:
-
-VON HIER KOPIEREN
-```verovio
-https://www.verovio.org/examples/downloads/Schubert_Lindenbaum.mei
-```BIS HIER KOPIEREN
-
-
-oder verwende einfach einen Dateinamen einer Datei in deinem Obsidian-Vault wie folgt:
-
-VON HIER KOPIEREN
-```verovio
-Schubert_Lindenbaum.mei
-```BIS HIER KOPIEREN
-
-
-Rendering-Einstellungen
-
-Im Einstellungsmenü des Obsidian-Plugins kannst du mehrere wichtige Parameter global für alle Renderings anpassen. Du kannst auch benutzerdefinierte Einstellungen für ein spezifisches Rendering anwenden, indem du sie deinem Code-Block in Obsidian hinzufügst. Bitte konsultiere die Verovio-Dokumentation für verfügbare Optionen. Beachte, dass nicht alle Optionen funktionieren könnten und sie sich gegenseitig beeinflussen können.
-
-VON HIER KOPIEREN
-```verovio
-Schubert_Lindenbaum.mei
-font: Leland
-scale: 10
-breaks: encoded
-```BIS HIER KOPIEREN
-
-
-Rendering spezifischer Takte
-
-Eine Besonderheit dieses Plugins ist das Rendering vordefinierter Takte. Um die Takte 1–10 zu rendern, kannst du den Befehl measureRange wie in diesem Beispiel verwenden. Bitte beachte, dass in diesem Beispiel Takt 20 nicht im Rendering enthalten ist. Die Art der gewählten Umbrüche (breaks) kann das Ergebnis stark beeinflussen (oder sogar dazu führen, dass das Plugin gar nichts rendert). Aus diesem Grund wird im folgenden Beispiel breaks: none hinzugefügt, was oft eine gute Standardoption für das Rendern von Musik-Snippets ist. Du kannst auch "start" und "end" anstelle von Zahlen verwenden, z. B. measureRange: 15-end – oder nur einzelne Takte rendern: measureRange: 5
-
-VON HIER KOPIEREN
-```verovio
-Schubert_Lindenbaum.mei
-scale: 50
-breaks: none
-measureRange: 1-20
-```BIS HIER KOPIEREN
-
-
-Öffnen mit MuseScore
-
-Die Schaltfläche "Open" öffnet die gerenderte Datei automatisch mit dem Programm, das im Betriebssystem damit verknüpft ist. MuseScore kann sowohl MEI- als auch MusicXML-Dateien importieren und exportieren. Nachdem du eine Datei mit MuseScore geöffnet hast, musst du sie als MusicXML oder MEI exportieren und die Datei, mit der du arbeitest, überschreiben.
-
-Verwendung von musikalischen Glyphen im Text
+<img width="687" height="90" alt="Pasted image 20240829115502 (1)" src="https://github.com/user-attachments/assets/20769162-d840-47f6-9cec-12f741c0e254" />
 
 Standardmäßig ist Obsidian nicht darauf ausgelegt, verschiedene Schriftarten inline (im Textfluss) zu verwenden. Mit ein paar Schritten lässt sich dies jedoch erreichen:
 
-Installiere zuerst das Obsidian Custom Font Plugin.
+Installiere zuerst das [Obsidian Custom Font Plugin](https://github.com/pourmand1376/obsidian-custom-font#obsidian-custom-font-plugin).
 
-Füge dann die gewünschten Schriftarten innerhalb des Plugins hinzu. Ich empfehle die folgenden Musik-Schriftarten von Dan Kreider: MusGlyphs und MusAnalysis.
+Füge dann die gewünschten Schriftarten innerhalb des Plugins hinzu. Ich empfehle die folgenden Musik-Schriftarten von Dan Kreider: [MusGlyphs](https://www.notationcentral.com/product/musglyphs/) und [MusAnalysis](https://www.notationcentral.com/product/musanalysis/).
 
 Nachdem du die Schriftarten hinzugefügt hast, wähle "Multiple Fonts" unter dem Menüpunkt "Font" in den Einstellungen aus.
 
 Um diese Schriftarten zu verwenden, müssen wir ein zusätzliches CSS-Snippet in den allgemeinen Darstellungseinstellungen von Obsidian hinzufügen, wie folgt. Dies stellt auch sicher, dass Ligaturen aktiviert sind, was für die Verwendung dieser Schriftarten notwendig ist.
 
+```code
  div.MusAnalysis {
     font-family: "MusAnalysis", sans-serif !important;
     font-feature-settings: "liga" 1, "clig" 1, "dlig" 1, "hlig" 1;
@@ -184,34 +129,212 @@ div.MusGlyphs {
     font-variant-ligatures: common-ligatures discretionary-ligatures historical-ligatures contextual;
     line-height: 3; /* Erhöhen Sie diesen Wert bei Bedarf */
 }
-
 span.MusAnalysis {
     font-family: "MusAnalysis", sans-serif !important;
     font-feature-settings: "liga" 1, "clig" 1, "dlig" 1, "hlig" 1;
     font-variant-ligatures: common-ligatures discretionary-ligatures historical-ligatures contextual;
-    line-height: 1.5; /* Bei Bedarf anpassen */
+    line-height: 1.5; /* Adjust this as needed */
+}
 }
 
 span.MusGlyphs {
     font-family: "MusGlyphs", sans-serif !important;
     font-feature-settings: "liga" 1, "clig" 1, "dlig" 1, "hlig" 1;
     font-variant-ligatures: common-ligatures discretionary-ligatures historical-ligatures contextual;
-    line-height: 1.5; /* Bei Bedarf anpassen */
+    line-height: 1.5; /* Adjust this as needed */
 }
+```
 
+Dann lassen sich musikalische Symbole (gemäß Font-Handbuch) folgendermaßen einsetzen:
 
-Danach kannst du musikalische Symbole wie folgt inline hinzufügen (und analog für andere Schriftarten):
-
+```code
 <span class="MusAnalysis">
     &8Dv  &3T  &5DD/ &4Sg  
 </span>
+```
+Oder auch als separater Absatz:
 
-
-oder als separaten Absatz wie diesen:
-
+```code
 <div class="MusAnalysis">
     &8Dv  &3T  &5DD/ &4Sg  
-</div>
+</span>
+```
+
+Wenn man sich mit dem [Templater Plugin](https://github.com/SilentVoid13/Templater) diesen Code vorbereitet, kann man musikalische Glyphen mit einem einfachen Shortcut einfügen.<span class="MusGlyphs">TC B3b T6# 5/4</span>
 
 
-Ich empfehle dringend, diese mit dem Templater Plugin als Shortcuts einzurichten, damit du sie nicht jedes Mal ausschreiben musst. Auf diese Weise kannst du eine musikalische Glyphe mit einem einfachen Tastenkürzel hinzufügen. <span class="MusGlyphs">TC B3b T6# 5/4</span>
+
+### Notation in Obsidian
+Notenbeispiele müssten normalerweise ald Bilddateien eingebettet werden, was bedeutet, dass jede Änderung an einem Musikbeispiel mehrere Schritte erfordert: Neuerstellung in der Notensatzsoftware, Exportieren und anschließendes erneutes Einbetten. Zudem kann man in normalerweise Musikbeispiele nicht anhören, keine Layout-Optionen ändern oder nur einen bestimmten Takt anzeigen lassen. Man arbeitet mit Bildern und nicht mit Musik. Das ist frustrierend, solange die musikalische Seite noch Work in Progress ist.
+
+Ich möchte deswegen den von mir erstellten [Verovio Music Renderer](https://github.com/kpaede/Verovio-Music-Renderer) verwenden – aber schauen wir uns zuerst andere Lösungen an.
+
+- Für [LilyPond](https://github.com/fuzzbyte/obsidian-lilypond): LilyPond ist ein offener Standard für textbasierte Musiknotation und liefert sehr schöne grafische Ergebnisse. Der Nachteil ist, dass die Notation textbasiert ist und daher nicht gerade einsteigerfreundlich. Dennoch ist es sehr nützlich, LilyPond innerhalb von Obsidian zu rendern, falls man es nutzt.
+
+- ABC ist ein offener Standard für Musiknotation in Textform. Es dient als Eingabe-Markup-Sprache in Musiksoftware sowie als Speicherformat für Musikdateien. Mit dem Obsidian ABC.JS Plugin kannst du ABC-Dateien nicht nur bequem rendern und abspielen, sondern den ABC-Code auch direkt in MuseScore in einen Code-Block eingeben. Es ist textbasiert, aber sehr einsteigerfreundlich und perfekt für kleine Skizzen.
+
+- Das [MuseScore integration plugin for Obsidian](https://github.com/RyotaUshio/obsidian-musescore#musescore-integration-plugin-for-obsidian) für Obsidian verfolgt einen anderen Ansatz. Es nutzt das PDF-Rendering von MuseScore als Auto-Export und ist ein weiterer sehr spannender Ansatz für dynamische Notation innerhalb von Obsidian. Im Gegensatz zum Verovio-Plugin (das wir verwenden werden) benötigt es keinen Export-Schritt nach MusicXML oder MEI innerhalb von MuseScore. Installiere es über BRAT. Der Ersteller dieses Plugins stellt es hier im Obsidian-Forum in einem sehr informativen Thread vor.
+
+# Das Verovio-Plugin
+
+![demo (1)](https://github.com/user-attachments/assets/fba77f9e-5aee-4469-8156-d0071950413c)
+
+Dieses Plugin für Obsidian nutzt Verovio, eine leichtgewichtige Open-Source-Bibliothek, um Musiknotation im MEI-Format (Music Encoding Initiative) sowie ABC-, MusicXML- und PAE in hochwertigen SVG-Grafiken einzubetten. Mit diesem Tool lässt sich Notation direkt in Obsidian rendern, bearbeiten und abspielen, was den Workflow viel komfortabler macht.
+
+Die wichtigsten Funktionen im Überblick:
+- Dynamisches Rendering: Rendert MEI, ABC, MusicXML und PAE direkt aus dem Obsidian-Ordner (relative Pfade), von URLs (absolute Pfade) oder direkt aus Code-Blöcken.
+- Interaktiver Editor: Eine Seitenleiste ermöglicht das Bearbeiten des Notencodes (mit Syntax-Highlighting für XML und MEI). Besonders komfortabel: Wenn man auf eine gerenderte Note klickst, springt der Cursor direkt zur entsprechenden Codezeile (derzeit nur für MEI in Code-Blöcken möglich).
+- SVG-Export: Über eine Toolbar (erscheint beim Drüberfahren mit der Maus) lässt sich die gerenderte Notation als SVG-Datei herunterladen.
+- Individuelle Einstellungen: Ein Menü bietet Optionen für das Rendering, inklusive Dark Mode und anpassbarer Hervorhebungsfarben.
+- Audio-Wiedergabe: Man kann Musik direkt abspielen, wobei die aktuell gespielten Noten synchron zum Ton optisch hervorgehoben werden.
+- Externe Bearbeitung: Öffne die Quelldatei mit nur einem Klick mit dem jeweiligen Standardeditor (Sibelius, Musescore usw.)
+- Präzise Auswahl: Es lassen sich gezielt bestimmte Takte auswählen und rendern.
+- Navigation: Enthält Schaltflächen zum Umblättern sowie eine automatische Blätterfunktion während der Wiedergabe
+
+Installiere das Plugin aus dem Obsidian-PLugin-Store, aktiviere es und kopier dann bspw. diesen Code.
+
+```
+COPY FROM HERE
+```verovio
+https://www.verovio.org/examples/downloads/Schubert_Lindenbaum.mei
+```COPY UNTIL HERE
+
+```
+
+Auch lokale Dateien funktionieren:
+
+```
+COPY FROM HERE
+```verovio
+Schubert_Lindenbaum.mei
+```COPY UNTIL HERE
+
+```
+Sowie der jweilige Code direkt im Codeblock:
+
+```
+COPY FROM HERE
+```verovio
+<mei xmlns="http://www.music-encoding.org/ns/mei">
+  <music>
+    <body>
+      <mdiv>
+        <score>
+          <section>
+            <measure n="1">
+              <staff n="1">
+                <layer n="1">
+                  <note pname="c" oct="4" dur="4"/>
+                  <note pname="e" oct="4" dur="4"/>
+                  <note pname="g" oct="4" dur="4"/>
+                </layer>
+              </staff>
+            </measure>
+          </section>
+        </score>
+      </mdiv>
+    </body>
+  </music>
+</mei>
+```COPY UNTIL HERE
+```
+
+Auch mit ABC Notation 
+
+```
+COPY FROM HERE
+```verovio
+X:1
+T: Test-Melody
+M:4/4
+K:C
+C D | G A B c |
+```COPY UNTIL HERE
+```
+
+und MEI
+
+```
+COPY FROM HERE
+```verovio
+<mei xmlns="http://www.music-encoding.org/ns/mei" meiversion="4.0.0">
+  <meiHead>
+    <fileDesc>
+      <titleStmt>
+        <title>Another Test</title>
+      </titleStmt>
+      <pubStmt/>
+    </fileDesc>
+  </meiHead>
+  <music>
+    <body>
+      <mdiv>
+        <score>
+          <scoreDef meter.count="4" meter.unit="4" key.sig="0">
+            <staffGrp>
+              <staffDef n="1" lines="5" clef.shape="G" clef.line="2"/>
+            </staffGrp>
+          </scoreDef>
+          <section>
+            <measure n="1">
+              <staff n="1">
+                <layer n="1">
+                  <note pname="c" oct="4" dur="4"/>
+                  <note pname="d" oct="4" dur="4"/>
+                  <note pname="e" oct="4" dur="4"/>
+                  <note pname="f" oct="4" dur="4"/>
+                </layer>
+              </staff>
+            </measure>
+          </section>
+        </score>
+      </mdiv>
+    </body>
+  </music>
+</mei>
+```COPY UNTIL HERE
+```
+sowie zuletzt PAE
+```
+COPY FROM HERE
+```verovio
+@clef:G-2
+@keysig:
+@timesig:c
+@data:2''C'B/=/''CC/=/2-4DE/2-8{'B''C+C'B}/2''C-//
+```COPY UNTIL HERE
+```
+## Side Panel
+Man kann über die Obsidian-Befehlspalette eine Seitenleiste öffnen, um den Notatations-Code direkt zu bearbeiten – inklusive Syntax-Hervorhebung für XML und MEI. Wenn man auf eine gerenderte Note klickt, springt der Cursor automatisch zur entsprechenden Codezeile. Das funktioniert jedoch nur bei MEI-Code innerhalb eines Codeblocks, nicht bei extern verknüpften Dateien.
+
+<img width="1431" height="923" alt="sidepanel" src="https://github.com/user-attachments/assets/42b47436-4acc-4b7a-af3d-7f3fa5ed2860" />
+
+## Rendering Options
+Im Einstellungsmenü des Obsidian-Plugins lassen sich verschiedene wichtige Parameter global für alle Renderings anpassen, einschließlich eines Dark Modes und der Auswahl einer Hervorhebungsfarbe.
+Zudem können benutzerdefinierte Einstellungen für ein spezifisches Rendering angewendet werden, indem man diese direkt dem jeweiligen Code-Block in Obsidian hinzufügt. Informationen zu den verfügbaren Optionen finden sich in der [Verovio documentation](https://book.verovio.org/toolkit-reference/toolkit-options.html). Es ist zu beachten, dass nicht alle Optionen funktionieren und diese sich gegenseitig beeinflussen können. Bitte berücksichtigen Sie zudem, dass diese Funktionen beim Rendering direkt aus einem Code-Block heraus (noch) nicht unterstützt werden.
+
+
+```
+COPY FROM HERE
+```verovio
+Schubert_Lindenbaum.mei
+font: Leland
+scale: 10
+breaks: encoded
+```COPY UNTIL HERE
+
+```
+
+Ein besonderes Merkmal dieses Plugins ist das Rendern vordefinierter Takte. Um beispielsweise die Takte 1–10 darzustellen, kann man den Befehl measureRange verwenden. Bitte beachten Sie, dass in diesem Fall Takt 20 nicht im Rendering enthalten wäre. Die gewählte Art der Zeilenumbrüche (breaks) kann das Ergebnis stark beeinflussen (oder im schlimmsten Fall dazu führen, dass gar nichts gerendert wird). So kann die Einstellung „encoded“ zu einer leeren Anzeige führen, wenn in der getroffenen Auswahl kein kodierter Umbruch existiert. Daher wird im folgenden Beispiel breaks: none verwendet, was oft eine gute Standardoption für das Rendern kurzer Musikfragmente ist. Man kann zudem „start“ und „end“ anstelle von Zahlen nutzen, z. B. 'measureRange: 15-end' – oder auch nur einzelne Takte ausgeben lassen: 'measureRange: 5'
+
+
+```
+COPY FROM HERE
+```verovio
+Schubert_Lindenbaum.mei
+scale: 50
+breaks: none
+measureRange: 1-20
+```COPY UNTIL HERE
+
+```
