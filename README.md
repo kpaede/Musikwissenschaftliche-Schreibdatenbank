@@ -34,14 +34,14 @@ Ich nutze das fantastsiche Plugin Notebook Navigator. Damit kann ich Dateien aus
 <img width="315" height="172" alt="Bildschirmfoto 2026-02-16 um 20 26 41" src="https://github.com/user-attachments/assets/73cf3cbf-e74e-4463-9e32-8a7f632f521c" />
 
 
-## 2. Properties und Stammdatengenerierung mit der GND (Gemeinsame Normdatei)
+## Properties
 Wenn ich thematisch arbeite, ist die Einteilung in Tags absichtsvoll grob, weil sie bei mir dazu dienen, schnell nach Oberkategorien zu navigieren. Sie sind bei mir nich dazu da, alle möglichen Informationen darin zu erfassen. Das übernehmen sogenannte Properties, die im "Header" einer Datei gespeichert werden und die man auch zum FIltern und sortieren nutzen kann. Das könnte etwa so aussehen.
 
 <img width="498" height="367" alt="Bildschirmfoto 2026-02-16 um 20 33 32" src="https://github.com/user-attachments/assets/f37511ec-707f-4708-9ae9-d750a55011a8" />
 
 dass damit etwas anzufangen ist, dürfte einleuchten. Man könnte zum Beispiel eine Reihe von Notizen nach einem bestimmten Jahr aufsteigend anordnen. Man könnte sich aber für einen bestimmten Bereich nur die Frauen anzeigen lassen oder Menschen, die einen bestimmten Wohnort hatten. Gleichzeitig ist es völlig uferlos, diese ganzen Dinge manuell einzutragen. Hier kommt eine Lösung ins Spiel, die ich bisher noch bei keiner anderen person gesehen haben. Die GND.
 
-### Automatische Abfrage über die gemeinsame Normdatei (GND)
+### Arbeitsersparnis durch automatische Abfrage der gemeinsame Normdatei (GND)
 
 Die GND ist, wie der Name schon sagt, eine Normdatei, die alle möglichen nützlichen Daten beinhaltet: Zahlen, Orte, Synonyme, weiterführende Iformationen, Linklisten usw. Sie wird von wissenschaftlichen Institutionen gepflegt und ist der perfekte Grundstock, wenn man eine thematische Notzig anlegt. Mein Template ermöglicht den Abruf aus der Normdatei in die Properties automatisiert. Angenommen wir wollen eine Notiz zu Sarah Connor anlegen – dann lässt sich in einer Suchmaske  nach ihr suchen, dann auswählen, welche Felder man in die Properties übernehmen möchte. Anschließend wird unsere Notiz vorausgefüllt.
 
@@ -64,7 +64,7 @@ Das Skript ist hier zu finden: [https://github.com/kpaede/Obsidian-Normdatei-Fet
 
 
 
-## Die Schreibstube: Fußnoten, Zotero und Export
+## Schreibstube: Fußnoten, Zotero und Export
 ### Fußnoten
 Für wissenschaftliche Texte nutze ich ausschließlich Inline-Fußnoten ^[Das ist eine Fußnote], weil Obsidian keine Seiten kennt. Wenn ich einen Textabschnitt lösche, verschwindet so außerdem die Inline-Fußnote mit – man vergisst keine Fußnotenleichen am Ende des Dokuments. Ich habe [hier](https://github.com/kpaede/convert-to-linine-footnotes) außerdem ein Python-Script erstellt, dass  klassische Fußnoten in Inline-Fußnoten umwandeln.
 
@@ -72,7 +72,7 @@ Für wissenschaftliche Texte nutze ich ausschließlich Inline-Fußnoten ^[Das is
 Wie gesagt, lese ich in Zotero und annotiere meine Texte da auch. Ich halte nichts davon, in Obsidian nur die Annotationen zu übernehmen, weil, wie gesagt, der Kontext dieser Annotation ja entscheidend ist – und der ist innerhalb von Zotero. Gleichwohl halte ich es für einen sehr legitimen Ansatz, wenn man Exzerpte und Zusammenfassungen als Einzelnotizen in Obsidian hat. Für solche Workflows gibt es online haufenweise Tutorials. Hier geht es etwas anderes. 
 
 ### Live-Zitationen in Obsidian
-Das Plugin Obsidian Pandoc Reference List: zeigt mir im Seitenpanel eine Live-Vorschau der Bibliografie im gewünschten Zitierstil an und liefert noch dazu eine Zotero-Suche und Live-Vorschau von Literaturangaben mir.
+Das Plugin [Obsidian Pandoc Reference List](https://github.com/mgmeyers/obsidian-pandoc-reference-list) zeigt mir im Seitenpanel eine Live-Vorschau der Bibliografie im gewünschten Zitierstil an und liefert noch dazu eine Zotero-Suche und Live-Vorschau von Literaturangaben mir.
 
 ### Export nach Word
 Für Export in andere Formate empfehle ich das [Obsidian Enhancing Export](https://github.com/mokeyish/obsidian-enhancing-export#obsidian-enhancing-export-plugin) plugin .
